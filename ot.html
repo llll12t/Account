@@ -65,11 +65,11 @@
                         </div>
                     </div>
 
-                    <div class="p-4 ">
+                    <div class="p-4 bg-slate-600  rounded-md">
                         <div class="flex justify-between">
-                            <h1 class="font-light text-white text-center text-sm">โอที</h1>
+                            <h1 class="font-light text-white text-center text-md">🕔ล่วงเวลา</h1>
                             <input type="text" class="input-field text-md bg-white text-white text-bold bg-opacity-0  "
-                                    id="columnKData" placeholder="0" name="columnKData" readonly>
+                                    id="columnGData"  name="columnGData" readonly>
                         </div>
                     </div>
                     <input type="hidden" id="userId" name="userId">
@@ -118,11 +118,15 @@
         </div>
     </div>
     <script>
+
+        
         // ประกาศค่า URL ที่ใช้เชื่อมต่อกับ Web App
         const WEB_MEMBER_APP_URL = 'https://script.google.com/macros/s/AKfycbxh6MnlWyyyk_zlppsPv8acuyckmCppUaFHuSbEGV2uCU3pHW-dYIpvWVAn12QuyHEW/exec'; 
         const WEB_APP_OT_URL = 'https://script.google.com/macros/s/AKfycbyMm7XASr0RkVOXh3E2fkDRkWR_mdrEsW8ycsqWp9Y1oIxzsBqa51d10Ac0Wb5BD6feLQ/exec'; 
         const LIFF_ID = '2005732932-O1bmGYne'; // Liff ID
-
+      
+      
+      
         // เริ่มการทำงานเมื่อโหลดหน้าเว็บ
         window.onload = async function () {
             await initializeLiff();
@@ -185,10 +189,8 @@
             document.getElementById('columnCData').value = row[3] || '';
             document.getElementById('columnDData').value = row[4] || '';
             document.getElementById('columnEData').src = row[5] || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-            document.getElementById('columnGData').value = row[7] || '';
-            document.getElementById('columnHData').value = row[8] || '';
-            document.getElementById('columnIData').value = row[9] || '';
-            document.getElementById('columnKData').value = row[9] || '';
+            document.getElementById('columnGData').value = row[10] || '';
+         
 
         }
 
