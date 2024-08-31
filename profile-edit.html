@@ -180,8 +180,8 @@
 
             // แสดงผลการโหลด
             Swal.fire({
-                title: 'Saving data...',
-                text: 'Please wait while we save your data.',
+                title: 'อัพเดทข้อมูล...',
+                text: 'รอสักครู่ อัพโหลดข้อมูลของคุณ..',
                 allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading(); // แสดง spinner
@@ -200,8 +200,8 @@
                 // ตรวจสอบผลลัพธ์ที่ได้รับ
                 if (result && result.includes('Data updated')) {
                     Swal.fire({
-                        title: 'Success',
-                        text: 'Data saved successfully!',
+                        title: 'เสร็จสิ้น',
+                        text: 'ได้บันทึกข้อมูลของคุณแล้ว!',
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });
@@ -213,8 +213,8 @@
             } catch (error) {
                 console.error('Error saving data:', error);
                 Swal.fire({
-                    title: 'Error',
-                    text: error.message || 'Failed to save data. Please try again.',
+                    title: 'ผิดพลาด',
+                    text: error.message || 'มีบางอย่างไม่ถูกต้อง.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
