@@ -83,17 +83,24 @@
 
                     <div class="flex justify-between">
                     <div class="mt-4 flex justify-between mb-5">
-                        <input type="date" id="otDate" name="otDate" class="mr-2 p-2 rounded-lg">
+                        <input type="date" id="otDate" name="otDate" class="mr-2 p-2 border rounded-lg">
                     </div>
 
                     <div class="mt-4 mb-5">
                         <input type="text" id="totalTime" name="totalTime" class="w-full p-2 border rounded-lg bg-gray-100" readonly>
                     </div>
                  </div>
-                    <div class="mt-4 flex justify-between mb-5">
-                        <input type="time" id="startTime" name="startTime"  class="w-1/2 mr-2 p-2 bg-white text-gray-800 rounded-lg">
-                        <input type="time" id="endTime" name="endTime" class="w-1/2 ml-2 p-2 bg-white text-gray-800 rounded-lg">
+                 <div class="mt-4 mb-5">
+                    <div class="flex justify-between mb-2">
+                        <label for="startTime" class="w-1/2 mr-2 text-gray-700">เวลาเริ่มต้น</label>
+                        <label for="endTime" class="w-1/2 ml-2 text-gray-700">เวลาสิ้นสุด</label>
                     </div>
+                    <div class="flex justify-between">
+                        <input type="time" id="startTime" name="startTime" class="w-1/2 mr-2 p-2 bg-white border text-gray-800 rounded-lg">
+                        <input type="time" id="endTime" name="endTime" class="w-1/2 ml-2 p-2 bg-white border text-gray-800 rounded-lg">
+                    </div>
+                </div>
+                
              
                     <div class="mt-6 mb-5">
                         <input type="text" id="otTitle" name="otTitle" placeholder="หัวข้อเรื่อง"
@@ -129,7 +136,7 @@
       
         // เริ่มการทำงานเมื่อโหลดหน้าเว็บ
         window.onload = async function () {
-            await initializeLiff();
+            //await initializeLiff();
         };
 
         // ฟังก์ชันสำหรับเริ่มการทำงานของ LIFF
