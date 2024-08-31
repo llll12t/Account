@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-slate-100 flex items-center justify-center h-screen p-6">
-    <div class="max-w-sm w-full bg-white text-slate-800 p-10 rounded-xl shadow-md">
+<body class="bg-slate-300 flex items-center justify-center  h-screen p-6">
+    <div class="bg-white max-w-sm w-full text-slate-800 p-10 rounded-xl shadow-md">
         <h2 class="text-lg text-center mb-4">ข้อมูลพนักงาน</h2>
         <form id="edit-form">
             <!-- ช่องสำหรับเก็บข้อมูล ID ซ่อนอยู่ -->
@@ -27,9 +26,12 @@
             <div class="mb-4 flex justify-center">
                 <!-- ช่องสำหรับแสดง URL รูปภาพ ซ่อนอยู่ -->
                 <label for="edit-imageUrl" class="block hidden text-sm">URL รูปภาพ</label>
-                <input type="hidden" id="edit-imageUrl" class="w-full border px-2 py-1 rounded-xl" oninput="updateImagePreview()" disabled>
+                <input type="hidden" id="edit-imageUrl" class="w-full border px-2 py-1 rounded-xl"
+                    oninput="updateImagePreview()" disabled>
                 <!-- แสดงภาพโปรไฟล์ -->
-                <img id="image-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Image Preview" class="mt-2 max-h-24 rounded">
+                <img id="image-preview"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="Image Preview" class="mt-2 max-h-24 rounded">
             </div>
             <!-- ส่วนสำหรับอัปโหลดรูปภาพ -->
             <div class="mb-4 hidden" id="image-upload-section">
@@ -44,18 +46,23 @@
             <!-- ฟิลด์สำหรับกรอกรหัสพนักงาน -->
             <div class="mb-4">
                 <label for="edit-employeeID" class="block text-sm">รหัสพนักงาน</label>
-                <input type="text" id="edit-employeeID" class="w-full text-slate-800 border px-2 py-1 rounded-xl" disabled>
+                <input type="text" id="edit-employeeID" class="w-full text-slate-800 border px-2 py-1 rounded-xl"
+                    disabled>
             </div>
             <!-- ฟิลด์สำหรับกรอกแผนก -->
             <div class="mb-4">
                 <label for="edit-department" class="block text-sm">แผนก</label>
-                <input type="text" id="edit-department" class="w-full text-slate-800 border px-2 py-1 rounded-xl" disabled>
+                <input type="text" id="edit-department" class="w-full text-slate-800 border px-2 py-1 rounded-xl"
+                    disabled>
             </div>
             <!-- ปุ่มสำหรับแก้ไขข้อมูล ยกเลิก และบันทึก -->
             <div class="flex justify-end">
-                <button type="button" id="edit-button" class="bg-yellow-500 text-white py-1 px-3 rounded-xl hover:bg-yellow-700">Edit</button>
-                <button type="button" class="bg-red-500 text-white py-1 px-3 rounded-xl hover:bg-red-700 mr-2 hidden" onclick="cancelEdit()">ยกเลิก</button>
-                <button type="submit" class="bg-blue-500 text-white py-1 px-3 rounded-xl hover:bg-blue-700 hidden">Save</button>
+                <button type="button" id="edit-button"
+                    class="bg-yellow-500 text-white py-1 px-3 rounded-xl hover:bg-yellow-700">Edit</button>
+                <button type="button" class="bg-red-500 text-white py-1 px-3 rounded-xl hover:bg-red-700 mr-2 hidden"
+                    onclick="cancelEdit()">ยกเลิก</button>
+                <button type="submit"
+                    class="bg-blue-500 text-white py-1 px-3 rounded-xl hover:bg-blue-700 hidden">Save</button>
             </div>
         </form>
     </div>
@@ -92,8 +99,21 @@
         // ฟังก์ชันค้นหาข้อมูลตาม userlineId
         async function searchDataByUserlineId(userlineId) {
             try {
+                // แสดงสปริ้นเมื่อกำลังโหลดข้อมูล
+                Swal.fire({
+                    title: 'Loading...',
+                    text: 'กำลังโหลดข้อมูล, กรุณารอสักครู่...',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading(); // แสดง spinner
+                    }
+                });
+
                 const response = await fetch(WEB_APP_URL);
                 const data = await response.json();
+
+                // ซ่อนสปริ้นหลังจากโหลดเสร็จ
+                Swal.close();
 
                 // ค้นหาข้อมูลตาม userlineId
                 const filteredData = data.find(row => row[1] === userlineId);
