@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ฟอร์มขอทำโอที</title>
+    <title>ฟอร์มขอโอที</title>
     <!-- นำเข้า Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- นำเข้า SweetAlert2 สำหรับแสดงกล่องข้อความ -->
@@ -131,33 +131,27 @@
         const WEB_MEMBER_APP_URL = 'https://script.google.com/macros/s/AKfycbxh6MnlWyyyk_zlppsPv8acuyckmCppUaFHuSbEGV2uCU3pHW-dYIpvWVAn12QuyHEW/exec'; 
         const WEB_APP_OT_URL = 'https://script.google.com/macros/s/AKfycbyMm7XASr0RkVOXh3E2fkDRkWR_mdrEsW8ycsqWp9Y1oIxzsBqa51d10Ac0Wb5BD6feLQ/exec'; 
         const LIFF_ID = '2005732932-O1bmGYne'; // Liff ID
-      
-      
-      
+       
+        
         // เริ่มการทำงานเมื่อโหลดหน้าเว็บ
-        window.onload = async function () {
-             await initializeLiff();
-        };
-
-        // ฟังก์ชันสำหรับเริ่มการทำงานของ LIFF
-      async function initializeLiff() {
-    try {
-        await liff.init({ 
-            liffId: `${LIFF_ID}`,
-            withLoginOnExternalBrowser: true,
-        });
-        if (liff.isLoggedIn()) {
-            getUserProfile();
-        } else {
-            liff.login({
-                redirectUri: window.location.href,
-                scope: "profile openid email sendMessages"
-            });
-        }
-    } catch (error) {
-        console.error('Error initializing LIFF:', error);
-    }
-}
+                window.onload = async function () {
+                     await initializeLiff();
+                };
+        
+                // ฟังก์ชันสำหรับเริ่มการทำงานของ LIFF
+                async function initializeLiff() {
+                    try {
+                        await liff.init({ liffId: `${LIFF_ID}` }); // ใช้ Liff ID ของคุณ
+                        if (liff.isLoggedIn()) {
+                            getUserProfile();
+                        } else {
+                            liff.login();
+                        }
+                    } catch (error) {
+                        console.error('Error initializing LIFF:', error);
+                    }
+                }
+        
 
 
         // ฟังก์ชันสำหรับดึงข้อมูลโปรไฟล์ผู้ใช้
